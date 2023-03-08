@@ -1,4 +1,4 @@
-Y = int(input())
-M = int(input())
-
-print((2*M)-Y)
+a = int(input())
+b = int(input())
+x = b+(b-a)
+print(x)
