@@ -1,7 +1,3 @@
 function solution(str1, str2) {
-    if (str1.includes(str2)) {
-        return 1
-    } else {
-        return 2
-    }
+    return str1.split(str2).length == 1 ? 2 : 1
 }
