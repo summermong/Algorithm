@@ -1,9 +1,11 @@
 function solution(order) {
-    let str = order.toString();
-    let regex = /[369]/g;
-    let matches = str.match(regex);
-    if (matches === null) {
-        return 0;
+    let count = 0;
+    while (order > 0) {
+        let digit = order % 10;
+        if (digit === 3 || digit === 6 || digit === 9) {
+            count++;
+        }
+        order = Math.floor(order / 10);
     }
-    return matches.length;
+    return count;
 }
