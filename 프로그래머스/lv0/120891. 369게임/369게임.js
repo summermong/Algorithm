@@ -1,4 +1,12 @@
 function solution(order) {
-    let ans = [...order.toString().matchAll(/[3|6|9]/g)].length
-    return ans
+    let count = 0;
+    let num = order;
+    while (num > 0) {
+        let digit = num % 10;
+        if (digit === 3 || digit === 6 || digit === 9) {
+            count++;
+        }
+        num = Math.floor(num / 10);
+    }
+    return count;
 }
