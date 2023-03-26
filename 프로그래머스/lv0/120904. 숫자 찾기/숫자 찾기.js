@@ -1,9 +1,8 @@
 function solution(num, k) {
     let str = num.toString();
-    let ind = str.indexOf(k)
-    if (ind === -1) {
-        return ind
+    if (str.includes(k)) {
+        return str.indexOf(k) + 1
     } else {
-        return ind+1
+        return -1
     }
 }
