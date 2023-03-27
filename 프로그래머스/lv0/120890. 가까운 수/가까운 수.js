@@ -1,3 +1,12 @@
 function solution(array, n) {
-    return array[array.sort((a,b) => a-b).map((v) => Math.abs(v-n)).indexOf(Math.min(...array.map((v) => Math.abs(v-n))))]
+    array.sort((a, b) => a-b);
+    let a = 0;
+    let b = 0;
+    let answer = [];
+
+    for (let i = 0; i < array.length; i++) {
+        answer.push(Math.abs(n-array[i]))
+        a = Math.min(...answer);
+        b = answer.indexOf(a)
+    } return array[b]
 }
