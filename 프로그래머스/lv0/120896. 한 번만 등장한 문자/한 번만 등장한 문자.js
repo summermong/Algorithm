@@ -6,6 +6,3 @@ function solution(s) {
         }
     } return answer.sort().join('')
 }
-console.log(solution("abcabcadc"))
-console.log(solution("abdc"))
-console.log(solution("hello"))
