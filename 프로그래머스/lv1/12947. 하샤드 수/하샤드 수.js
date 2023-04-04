@@ -4,10 +4,5 @@ function solution(x) {
     for (let i = 0; i < xString.length; i++) {
         sum += xString[i]
     }
-
-    if (x % sum === 0) {
-        return true
-    } else {
-        return false
-    }
+    return x % sum === 0 ? true : false
 }
