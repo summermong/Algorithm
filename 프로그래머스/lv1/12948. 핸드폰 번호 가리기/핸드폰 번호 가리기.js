@@ -1,5 +1,4 @@
 function solution(phone_number) {
-  let answer = "";
   let leng = phone_number.length - 4;
   let lastNumber = [...phone_number].splice(leng, 4);
 
