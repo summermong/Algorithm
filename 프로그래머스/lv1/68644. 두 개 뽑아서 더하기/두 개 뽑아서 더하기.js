@@ -1,6 +1,6 @@
 function solution(numbers) {
   let answer = [];
-  let answer2 = [];
+  let realanswer = [];
 
   for (let i = 0; i < numbers.length - 1; i++) {
     for (let j = i + 1; j < numbers.length; j++) {
@@ -13,9 +13,9 @@ function solution(numbers) {
   
   for (let i = 0; i < answer.length; i++) {
     if (answer[i] !== answer[i + 1]) {
-      answer2.push(answer[i]);
+      realanswer.push(answer[i]);
     }
   }
   
-  return answer2;
+  return realanswer;
 }
