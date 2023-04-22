@@ -1,7 +1,6 @@
 function solution(start, end) {
     let answer = []
-    for (let i = end; i <= start; i++) {
+    for (let i = start; i >= end; i--) {
         answer.push(i)
-    }
-    return answer.reverse()
+    } return answer
 }
