@@ -1,4 +1,3 @@
 function solution(my_string, n) {
-    let splitMystring = my_string.split('');
-    return splitMystring.slice(0, n).join('')
+    return my_string.substring(0, n)
 }
