@@ -1,5 +1,4 @@
 function solution(n) {
-  let count = 0;
   let n2 = n.toString(2);
   let n2length = [...n2].filter((v) => v === "1").length;
 
