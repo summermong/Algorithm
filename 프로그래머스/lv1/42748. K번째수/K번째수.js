@@ -6,5 +6,6 @@ function solution(array, commands) {
     arr.sort((a, b) => a - b);
     answer.push(Number(arr.splice(commands[i][2] - 1, 1)));
   }
+    
   return answer;
 }
