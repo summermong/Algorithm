@@ -1,15 +1,6 @@
-function solution(s) {
-  let arr = [];
-  let answer = [];
-
-  for (let i = 0; i < s.length; i++) {
-    let ele = answer.lastIndexOf(s.substr(i, 1));
-    answer.push(s.substr(i, 1));
-    if (ele === -1) {
-      arr.push(ele);
-    } else {
-      arr.push(arr.length - ele);
-    }
-  }
-  return arr;
-}
+const solution = (s) =>
+  [...s].map((char, i) => {
+    const count = s.slice(0, i).lastIndexOf(char);
+    console.log(count)
+    return count < 0 ? count : i - count;
+  });
