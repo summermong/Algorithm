@@ -11,11 +11,5 @@ function solution(numbers) {
   
   answer.sort((a, b) => a - b);
   
-  for (let i = 0; i < answer.length; i++) {
-    if (answer[i] !== answer[i + 1]) {
-      realanswer.push(answer[i]);
-    }
-  }
-  
-  return realanswer;
+  return [...new Set(answer)]
 }
