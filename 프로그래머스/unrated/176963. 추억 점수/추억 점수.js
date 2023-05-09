@@ -9,7 +9,7 @@ function solution(name, yearning, photo) {
   for (let i = 0; i < photo.length; i++) {
     let score = 0;
     for (let j = 0; j < photo[i].length; j++) {
-      score += dic[photo[i][j]] || 0;
+      dic[photo[i][j]] ? (score += dic[photo[i][j]]) : 0;
     }
     answer.push(score);
   }
