@@ -1,17 +1,11 @@
 function solution(k, m, score) {
-    let answer = []
-    let box = ''
-    let sortScore = score.sort((a, b) => a-b).reverse()
-    for (let i = 0; i < sortScore.length; i+=m) {
-        let box = sortScore.slice(i, m+i)
+    const sortScore = score.sort((a, b) => b - a);
+    let answer = 0;
+    for (let i = 0; i < sortScore.length; i += m) {
+        const box = sortScore.slice(i, i + m);
         if (box.length === m) {
-            answer.push(box)
+            answer += box[m - 1] * m;
         }
     }
-    let sum = 0;
-    for (let i = 0; i < answer.length; i++) {
-        let min = answer[i][m-1];
-        sum += min*(answer[i].length)
-    }
-    return sum
+    return answer;
 }
