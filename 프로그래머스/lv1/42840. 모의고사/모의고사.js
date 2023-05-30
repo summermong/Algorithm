@@ -1,8 +1,7 @@
 function solution(answers) {
   let answer = [];
-  let person1 = 0;
-  let person2 = 0;
-  let person3 = 0;
+  let person1 = 0, person2 = 0, person3 = 0
+
 
   let one = [1, 2, 3, 4, 5];
   let two = [2, 1, 2, 3, 2, 4, 2, 5];
@@ -19,21 +18,11 @@ function solution(answers) {
       person3 += 1;
     }
   }
-
-  if (person1 == person2 && person2 == person3) {
-    answer.push(1, 2, 3);
-  } else if (person1 > person2 && person1 > person3) {
-    answer.push(1);
-  } else if (person2 > person1 && person2 > person3) {
-    answer.push(2);
-  } else if (person3 > person1 && person3 > person2) {
-    answer.push(3);
-  } else if (person1 == person2 && person1 !== person3) {
-    answer.push(1, 2);
-  } else if (person2 == person3 && person2 !== person1) {
-    answer.push(2, 3);
-  } else if (person3 == person1 && person3 !== person2) {
-    answer.push(3, 1);
-  }
-  return answer.sort((a, b) => a - b);
+    let max = Math.max(person1, person2, person3)
+    
+    if (person1 === max) { answer.push(1) }
+    if (person2 === max) { answer.push(2) }
+    if (person3 === max) { answer.push(3) }
+    
+    return answer
 }
