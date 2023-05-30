@@ -21,9 +21,7 @@ function solution(answers) {
   }
 
   if (person1 == person2 && person2 == person3) {
-    answer.push(1);
-    answer.push(2);
-    answer.push(3);
+    answer.push(1, 2, 3);
   } else if (person1 > person2 && person1 > person3) {
     answer.push(1);
   } else if (person2 > person1 && person2 > person3) {
@@ -31,14 +29,11 @@ function solution(answers) {
   } else if (person3 > person1 && person3 > person2) {
     answer.push(3);
   } else if (person1 == person2 && person1 !== person3) {
-    answer.push(1);
-    answer.push(2);
+    answer.push(1, 2);
   } else if (person2 == person3 && person2 !== person1) {
-    answer.push(2);
-    answer.push(3);
+    answer.push(2, 3);
   } else if (person3 == person1 && person3 !== person2) {
-    answer.push(3);
-    answer.push(1);
+    answer.push(3, 1);
   }
   return answer.sort((a, b) => a - b);
 }
