@@ -1,7 +1,7 @@
 function solution(participant, completion) {
   let fail = "";
 
-  completion[completion.length] = "";
+  completion.push("");
     
   let arr1 = participant.sort();
   let arr2 = completion.sort();
