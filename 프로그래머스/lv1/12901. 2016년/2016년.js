@@ -1,4 +1,20 @@
 function solution(a, b) {
-    let day = new Date(2016, a-1, b)
-    return day.toString().slice(0, 3).toUpperCase()
+  let month1stWeek = [
+    "FRI",
+    "MON",
+    "TUE",
+    "FRI",
+    "SUN",
+    "WED",
+    "FRI",
+    "MON",
+    "THU",
+    "SAT",
+    "TUE",
+    "THU",
+  ]; //각 월의 1일 요일
+  let weekend = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  let matchWeek = weekend.indexOf(month1stWeek[a - 1]) + ((b - 1));
+  return weekend[matchWeek % 7];
 }
