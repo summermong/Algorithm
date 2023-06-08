@@ -1,18 +1,19 @@
 function solution(participant, completion) {
-    let map = new Map();
+  let fail = "";
+
+  completion.push("");
     
-    for (let i = 0; i < participant.length; i++) {
-        let player = participant[i]
-        let finished = completion[i]
-        
-        map.set(player, (map.has(player) ? map.get(player) : 0) +1 )
-        map.set(finished, (map.has(finished) ? map.get(finished) : 0) -1)
+  let arr1 = participant.sort();
+  let arr2 = completion.sort();
+  
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+        console.log(arr1[i])
+        console.log(arr2[i])
+      fail = arr1[i];
+        console.log(fail)
     }
-    
-    for (let [k, v] of map) {
-        if (v > 0) {
-            return k
-        }
-    }
-    
+  }
+  return fail;
 }
