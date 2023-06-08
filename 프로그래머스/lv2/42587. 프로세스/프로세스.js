@@ -1,26 +1,25 @@
 function solution(priorities, location) {
-  let answer = 0;
-  let queue = [...priorities];
+    let answer = 0;
+    let arr = []
+    let max_value = Math.max(...priorities);
 
-  while (queue.length > 0) {
-    let currentProcess = queue.shift();
-
-    if (queue.find((priority) => priority > currentProcess)) {
-      queue.push(currentProcess);
-      console.log(queue);
-    } else {
-      answer++;
-      if (location === 0) {
-        break;
-      }
+    //위치 배열 만들기
+    for(let i = 0; i < priorities.length; i++){
+        arr.push(i);
     }
 
-    if (location === 0) {
-      location = queue.length - 1;
-    } else {
-      location--;
+   //priorities 배열이 비어있을 때까지 반복
+    while(priorities.length != 0){
+         max_value = Math.max(...priorities);
+        
+        if(priorities[0] < max_value){
+            priorities.push(priorities.shift());
+            arr.push(arr.shift());
+        }else {
+            answer+=1;
+            priorities.shift();
+            if(arr.shift() == location)
+                return answer;
+        }
     }
-  }
-
-  return answer;
 }
