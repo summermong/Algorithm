@@ -2,11 +2,12 @@ function solution(priorities, location) {
   let answer = 0;
   let queue = [...priorities];
 
-  while (true) {
+  while (queue.length > 0) {
     let currentProcess = queue.shift();
 
-    if (queue.find(priority => priority > currentProcess)) {
+    if (queue.find((priority) => priority > currentProcess)) {
       queue.push(currentProcess);
+      console.log(queue);
     } else {
       answer++;
       if (location === 0) {
@@ -23,7 +24,3 @@ function solution(priorities, location) {
 
   return answer;
 }
-
-console.log(solution([2, 1, 3, 2], 2));  // 1
-console.log(solution([1, 1, 9, 1, 1, 1], 0));  // 5
-console.log(solution([6, 1, 5, 3, 2], 1));  // 3
