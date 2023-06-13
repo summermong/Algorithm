@@ -3,7 +3,6 @@ function solution(n, lost, reserve) {
   let canBorrow = reserve.filter((v) => !lost.includes(v)).sort((a, b) => a-b);
 
 
-
   for (let i = 0; i < canBorrow.length; i++) {
     let borrower = canBorrow[i];
 
@@ -12,10 +11,8 @@ function solution(n, lost, reserve) {
 
     } else if (realLost.includes(borrower + 1)) {
       realLost.splice(realLost.indexOf(borrower + 1), 1);
-
     }
   }
-
 
   return n-realLost.length;
 }
