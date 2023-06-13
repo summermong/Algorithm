@@ -1,43 +1,43 @@
 function solution(genres, plays) {
   let answer = [];
-  let genremap = new Map();
-  let playmap = new Map();
+  let genreMap = new Map();
+  let playMap = new Map();
 
-  // 장르 구하기
+  // 가장 많이 재생된 장르순으로 정렬 (pop)
   for (let i = 0; i < genres.length; i++) {
-    if (genremap.has(genres[i])) {
-      genremap.set(genres[i], genremap.get(genres[i]) + plays[i]);
+    if (genreMap.has(genres[i])) {
+      genreMap.set(genres[i], genreMap.get(genres[i]) + plays[i]);
     } else {
-      genremap.set(genres[i], plays[i]);
+      genreMap.set(genres[i], plays[i]);
     }
   }
 
-  // 장르별 재생 수 기준으로 정렬
-  let sortedGenres = [...genremap].sort((a, b) => b[1] - a[1]);
+  let BestGenre = [...genreMap].sort((a, b) => b[1] - a[1]);
+  // [ [ 'pop', 3100 ], [ 'classic', 1450 ] ]
 
-  // 노래 구하기
+  // 장르 내에서 많이 재생된 노래순으로 정렬
   for (let i = 0; i < plays.length; i++) {
-    if (playmap.has(genres[i])) {
-      playmap.get(genres[i]).push({ index: i, plays: plays[i] });
+    if (playMap.has(genres[i])) {
+      playMap.get(genres[i]).push({ index: i, plays: plays[i] });
     } else {
-      playmap.set(genres[i], [{ index: i, plays: plays[i] }]);
+      playMap.set(genres[i], [{ index: i, plays: plays[i] }]);
     }
   }
 
-  for (let [genre, songs] of playmap) {
-    songs.sort((a, b) => b.plays - a.plays);
+    console.log(playMap)
+  for (let [k, v] of playMap) {
+    v.sort((a, b) => b.plays - a.plays);
   }
 
-  // 정렬된 장르별로 노래 추가
-  for (let [genre, totalPlays] of sortedGenres) {
-    let songs = playmap.get(genre);
-    for (let i = 0; i < songs.length; i++) {
-      if (i >= 2) {
+  // 정렬된 장르별로 노래 순위 자르기
+  for (let i = 0; i < BestGenre.length; i++) {
+    let songs = playMap.get(BestGenre[i][0]);
+    for (let j = 0; j < songs.length; j++) {
+      if (j >= 2) {
         break;
       }
-      answer.push(songs[i].index);
+      answer.push(songs[j].index);
     }
   }
-
   return answer;
 }
