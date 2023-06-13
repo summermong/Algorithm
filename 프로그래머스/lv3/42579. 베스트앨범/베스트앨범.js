@@ -13,7 +13,7 @@ function solution(genres, plays) {
   }
 
   // 장르별 재생 수 기준으로 정렬
-  let sortedGenres = [...genremap.entries()].sort((a, b) => b[1] - a[1]);
+  let sortedGenres = [...genremap].sort((a, b) => b[1] - a[1]);
 
   // 노래 구하기
   for (let i = 0; i < plays.length; i++) {
