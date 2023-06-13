@@ -1,14 +1,14 @@
 function solution(n, lost, reserve) {
-  let lost_student = lost.filter(v => !reserve.includes(v)).sort();
-  let reserve_student = reserve.filter(v => !lost.includes(v)).sort();
+  let lostStudent = lost.filter((v) => !reserve.includes(v)).sort();
+  let reserveStudent = reserve.filter((v) => !lost.includes(v)).sort();
 
-  for (let i = 0; i < reserve_student.length; i++) {
-    if (lost_student.includes(reserve_student[i] - 1)) {
-      lost_student = lost_student.filter(v => v !== reserve_student[i] - 1);
-    } else if (lost_student.includes(reserve_student[i] + 1)) {
-      lost_student = lost_student.filter(v => v !== reserve_student[i] + 1);
+  for (let i = 0; i < reserveStudent.length; i++) {
+    if (lostStudent.includes(reserveStudent[i] - 1)) {
+      lostStudent = lostStudent.filter((v) => v !== reserveStudent[i] - 1);
+    } else if (lostStudent.includes(reserveStudent[i] + 1)) {
+      lostStudent = lostStudent.filter((v) => v !== reserveStudent[i] + 1);
     }
   }
 
-  return n - lost_student.length;
+  return n - lostStudent.length;
 }
