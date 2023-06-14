@@ -3,14 +3,14 @@ function solution(number, k) {
   const stack = [];
 
   for (let i = 0; i < arr.length; i++) {
-    while (k > 0 && stack.length > 0 && stack[stack.length - 1] < arr[i]) {
+    while (k > 0 && stack[stack.length - 1] < arr[i]) {
       stack.pop();
       k--;
     }
     stack.push(arr[i]);
   }
-
-  stack.splice(stack.length - k, k);
-
+  if (stack.length > arr.length - k) {
+    return stack.slice(0, stack.length - k).join("");
+  }
   return stack.join("");
 }
