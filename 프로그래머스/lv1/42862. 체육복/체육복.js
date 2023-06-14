@@ -1,18 +1,18 @@
 function solution(n, lost, reserve) {
-  let realLost = lost.filter((v) => !reserve.includes(v)).sort((a, b) => a-b);
-  let canBorrow = reserve.filter((v) => !lost.includes(v)).sort((a, b) => a-b);
+  let realLost = lost.filter((v) => !reserve.includes(v)).sort((a, b) => a - b);
+  let canLend = reserve
+    .filter((v) => !lost.includes(v))
+    .sort((a, b) => a - b);
 
+  for (let i = 0; i < canLend.length; i++) {
+    let lender = canLend[i];
 
-  for (let i = 0; i < canBorrow.length; i++) {
-    let borrower = canBorrow[i];
-
-    if (realLost.includes(borrower - 1)) {
-      realLost.splice(realLost.indexOf(borrower - 1), 1);
-
-    } else if (realLost.includes(borrower + 1)) {
-      realLost.splice(realLost.indexOf(borrower + 1), 1);
+    if (realLost.includes(lender - 1)) {
+      realLost.splice(realLost.indexOf(lender - 1), 1);
+    } else if (realLost.includes(lender + 1)) {
+      realLost.splice(realLost.indexOf(lender + 1), 1);
     }
   }
 
-  return n-realLost.length;
+  return n - realLost.length;
 }
