@@ -7,6 +7,7 @@ function solution(k, dungeons) {
 
     for (let i = 0; i < dungeons.length; i++) {
       let current = dungeons[i];
+
       if (k >= current[0] && !visited[i]) {
         visited[i] = true;
         dfs(count + 1, k - current[1]);
