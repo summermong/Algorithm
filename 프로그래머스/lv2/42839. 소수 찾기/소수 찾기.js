@@ -27,8 +27,5 @@ function solution(numbers) {
 	let set = new Set();
 
 	dfs(set, nums, '');
-	
-	console.log(set);
-
 	return set.size;
 }
