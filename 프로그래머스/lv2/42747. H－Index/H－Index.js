@@ -1,14 +1,12 @@
 function solution(citations) {
-  const sorted = citations.sort((a, b) => a - b);
-  const n = sorted.length;
+  citations.sort((a, b) => b - a);
 
-  let hIndex = 0;
-  for (let i = 0; i < n; i++) {
-    if (sorted[i] >= n - i) {
-      hIndex = n - i;
-      break;
+  let answers = 0;
+
+  for (let i = 0; i < citations.length; i++) {
+    if (i < citations[i]) {
+      answers++;
     }
   }
-
-  return hIndex;
+  return answers;
 }
