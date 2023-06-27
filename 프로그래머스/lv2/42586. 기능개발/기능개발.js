@@ -1,29 +1,30 @@
 function solution(progresses, speeds) {
-  let needSpeed = progresses.map((v) => {
-    return 100 - v;
-  });
-  let needDay = speeds.map((v, i) => {
-    return Math.ceil(needSpeed[i] / v);
-  });
+  const answer = []; 
+  const queue = []; 
 
-  for (let i = 0; i < needDay.length; i++) {
-    if (needDay[i + 1] < needDay[i]) {
-      needDay.splice(i + 1, 1, needDay[i]);
-    }
+  
+  for (let i = 0; i < progresses.length; i++) {
+    queue.push(Math.ceil((100 - progresses[i]) / speeds[i]));
   }
 
-  let counts = [];
-  let currentCount = 1;
+  let count = 0;
+  let maxDay = 0; 
 
-  for (let i = 0; i < needDay.length - 1; i++) {
-    if (needDay[i] === needDay[i + 1]) {
-      currentCount++;
-    } else {
-      counts.push(currentCount);
-      currentCount = 1;
+  while (queue.length > 0) {
+    const day = queue.shift(); 
+
+    if (day > maxDay) {
+      if (count > 0) {
+        answer.push(count);
+        count = 0;
+      }
+      maxDay = day;
     }
-  }
-  counts.push(currentCount);
 
-  return counts;
+    count++;
+  }
+
+  answer.push(count);
+
+  return answer;
 }
