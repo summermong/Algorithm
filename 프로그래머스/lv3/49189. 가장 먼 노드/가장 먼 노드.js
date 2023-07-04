@@ -1,49 +1,24 @@
 function solution(n, edge) {
-  const visited = Array(n + 1).fill(false);
-  const node = Array(n + 1);
+  const graph = Array.from(Array(n), () => []);
 
-  for (let i = 0; i < n + 1; i++) {
-    node[i] = [];
+  for (let [from, to] of edge) {
+    graph[from - 1].push(to - 1);
+    graph[to - 1].push(from - 1);
   }
 
-  for (let i = 0; i < edge.length; i++) {
-    node[edge[i][0]].push(edge[i][1]);
-    node[edge[i][1]].push(edge[i][0]);
-  }
+  const visited = [1];
+  const queue = [0];
 
-  let nums = bfs(1, node, visited);
-  return maxNum(nums);
-}
-
-function bfs(level, node, visited) {
-  const queue = [];
-  queue.push(level);
-  visited[level] = true;
-  const nums = Array(node.length).fill(0);
-
-  while (queue.length > 0) {
-    level = queue.shift();
-    for (let cur of node[level]) {
-      if (!visited[cur]) {
-        nums[cur] = nums[level] + 1;
-        visited[cur] = true;
-        queue.push(cur);
+  while (queue.length) {
+    const current = queue.shift();
+    for (const next of graph[current]) {
+      if (!visited[next]) {
+        visited[next] = visited[current] + 1;
+        queue.push(next);
       }
     }
   }
-  return nums;
-}
 
-function maxNum(nums) {
-  let max = 0;
-  let count = 1;
-  for (let num of nums) {
-    if (num > max) {
-      max = num;
-      count = 1;
-    } else if (num === max) {
-      count++;
-    }
-  }
-  return count;
+  const max = Math.max(...visited);
+  return visited.filter((v) => v === max).length;
 }
