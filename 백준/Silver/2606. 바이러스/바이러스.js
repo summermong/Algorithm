@@ -12,26 +12,29 @@ for (let i = 0; i < numOfEdge; i++) {
   graph[to].push(from);
 }
 
-function dfs(start, graph) {
+function bfs(start, graph) {
+  const queue = [];
   const answer = [];
-  const stack = [];
   const visited = Array(numOfNode + 1).fill(false);
 
-  stack.push(start);
+  queue.push(start);
   visited[start] = true;
 
-  while (stack.length) {
-    let node = stack.pop();
+  while (queue.length) {
+    let node = queue.shift();
 
     for (let next of graph[node]) {
       if (!visited[next]) {
-        stack.push(next);
+        queue.push(next);
         visited[next] = true;
-        answer.push(next);
       }
     }
   }
-  return answer.length;
+  return visited;
 }
 
-console.log(dfs(1, graph));
+console.log(
+  bfs(1, graph)
+    .slice(2)
+    .filter((v) => v === true).length
+);
