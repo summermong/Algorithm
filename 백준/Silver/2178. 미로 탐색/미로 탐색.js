@@ -9,22 +9,22 @@ const queue = [];
 const dx = [0, 0, -1, 1];
 const dy = [1, -1, 0, 0];
 
-// 시작점
-maze[0][0] = 0;
+// 시작점 (문제에서는 1, 1)
+maze[0][0] = 1;
 queue.push([0, 0]);
 
-while (queue.length > 0) {
+while (queue.length) {
   const [x, y] = queue.shift();
 
   for (let i = 0; i < 4; i++) {
-    const nx = x + dx[i];
-    const ny = y + dy[i];
+    let nx = x + dx[i];
+    let ny = y + dy[i];
 
-    if (nx >= 0 && nx < row && ny >= 0 && ny < col && maze[nx][ny] === 1) {
+    if (nx >= 0 && ny >= 0 && nx < row && ny < col && maze[nx][ny] === 1) {
       queue.push([nx, ny]);
       maze[nx][ny] = maze[x][y] + 1;
     }
   }
 }
 
-console.log(maze[row - 1][col - 1] + 1);
+console.log(maze[row - 1][col - 1]);
