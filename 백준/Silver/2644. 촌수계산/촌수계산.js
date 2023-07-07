@@ -1,8 +1,8 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
-// 노드 수와 간선 수
+
+// 노드 수
 const numOfNode = Number(input.shift());
-const numOfEdge = Number(input[1]);
 
 // 관계를 알아야 하는 번호
 const [one, two] = input[0].split(" ").map(Number);
