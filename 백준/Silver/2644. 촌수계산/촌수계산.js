@@ -1,7 +1,5 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
-
-
 // 노드 수와 간선 수
 const numOfNode = Number(input.shift());
 const numOfEdge = Number(input[1]);
@@ -30,14 +28,14 @@ function bfs(graph, start) {
       if (!visited[next]) {
         queue.push(next);
         visited[next] = visited[node] + 1;
-        if (next === two) {
-          return visited[next] - 1;
-        }
       }
     }
   }
-  return -1;
+  if (visited[one] === 0 || visited[two] === 0) {
+    return -1;
+  } else {
+    return Math.abs(visited[one] - visited[two]);
+  }
 }
 
 console.log(bfs(graph, one));
-
