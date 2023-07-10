@@ -1,33 +1,33 @@
 function solution(tickets) {
-  const graph = {};
+  const graph = new Map();
 
+  // 그래프 생성
   for (let [from, to] of tickets) {
-    if (!graph[from]) {
-      graph[from] = [];
+    if (!graph.has(from)) {
+      graph.set(from, []);
     }
-    graph[from].push(to);
+    graph.get(from).push(to);
   }
 
-  for (let from in graph) {
-    graph[from].sort();
+  // 도착지 정렬
+  for (let destinations of graph.values()) {
+    destinations.sort();
   }
 
   const route = [];
-  const stack = ["ICN"]; // 시작점인 "ICN"을 스택에 추가
 
-  while (stack.length > 0) {
-    const from = stack[stack.length - 1];
+  function dfs(start) {
+    const destinations = graph.get(start);
 
-    if (!graph[from] || graph[from].length === 0) {
-      // 현재 위치에서 더 이상 갈 수 있는 도착지가 없으면
-      // 스택에서 꺼내 경로에 추가
-      route.push(stack.pop());
-    } else {
-      // 현재 위치에서 갈 수 있는 도착지가 있으면
-      // 알파벳 순서대로 정렬하여 스택에 추가
-      stack.push(graph[from].shift());
+    while (destinations && destinations.length > 0) {
+      const next = destinations.shift();
+      dfs(next);
     }
+
+    route.push(start);
   }
 
-  return route.reverse(); // 경로가 역순으로 구성되므로 뒤집어 반환
+  dfs("ICN");
+
+  return route.reverse();
 }
