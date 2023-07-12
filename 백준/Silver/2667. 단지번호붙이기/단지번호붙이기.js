@@ -20,7 +20,6 @@ function bfs(row, col) {
 
   while (queue.length > 0) {
     const [r, c] = queue.shift(); // 큐에서 위치를 꺼냄
-    count++; // 집의 수 증가
 
     // 상하좌우 위치 확인
     for (let i = 0; i < 4; i++) {
@@ -39,7 +38,9 @@ function bfs(row, col) {
         map[nr][nc] = true; // 방문 표시
       }
     }
+    count++; // 집의 수 증가
   }
+
   houseCount.push(count); // 형성된 단지의 집 수를 리스트에 추가
 }
 
