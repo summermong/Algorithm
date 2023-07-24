@@ -1,33 +1,30 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim();
 
-let num = Number(input);
-let step = 0;
+const x = parseInt(input);
+let i = 0;
+let cnt = 0;
 
-while (num > 0) {
-  step++;
-  num = num - step;
+while (true) {
+  i += 1;
+  cnt += i;
+  if (x <= cnt) {
+    break;
+  }
 }
 
-const isEvenStep = step % 2 === 0;
-
-let up, down;
-if (isEvenStep) {
-  up = step;
-  down = 1;
-  while (num < 0) {
-    up--;
-    down++;
-    num++;
+if (i % 2 === 0) {
+  for (let j = 0; j < cnt + 1; j++) {
+    if (x === cnt - j) {
+      console.log(`${i - j}/${j + 1}`);
+      break;
+    }
   }
 } else {
-  up = 1;
-  down = step;
-  while (num < 0) {
-    up++;
-    down--;
-    num++;
+  for (let f = 0; f < cnt + 1; f++) {
+    if (x === cnt - f) {
+      console.log(`${f + 1}/${i - f}`);
+      break;
+    }
   }
 }
-
-console.log(`${up}/${down}`);
