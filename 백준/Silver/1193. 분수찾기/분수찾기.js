@@ -9,16 +9,25 @@ while (num > 0) {
   num = num - step;
 }
 
-const up = [];
-const down = [];
+const isEvenStep = step % 2 === 0;
 
-for (let i = 0; i < step; i++) {
-  up.push(i + 1);
-  down.push(step - i);
-}
-
-if (step % 2 === 0) {
-  console.log(`${up[num + step - 1]}/${down[num + step - 1]}`);
+let up, down;
+if (isEvenStep) {
+  up = step;
+  down = 1;
+  while (num < 0) {
+    up--;
+    down++;
+    num++;
+  }
 } else {
-  console.log(`${down[num + step - 1]}/${up[num + step - 1]}`);
+  up = 1;
+  down = step;
+  while (num < 0) {
+    up++;
+    down--;
+    num++;
+  }
 }
+
+console.log(`${up}/${down}`);
