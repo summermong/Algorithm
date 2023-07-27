@@ -1,8 +1,8 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-const input = fs.readFileSync(filePath, "utf-8").trim().split("\n");
+let input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-const grades = {
+let grades = {
   "A+": 4.5,
   A0: 4.0,
   "B+": 3.5,
@@ -14,18 +14,16 @@ const grades = {
   F: 0.0,
 };
 
-let totalGradePoints = 0;
-let totalCredits = 0;
+let totalGrade = 0;
+let totalNum = 0;
 
 for (const line of input) {
-  const [subject, score, grade] = line.split(" ");
+  const [sub, score, grade] = line.split(" ");
 
   if (grade !== "P") {
-    const gradeValue = grades[grade];
-    totalGradePoints += Number(score) * gradeValue;
-    totalCredits += Number(score);
+    totalGrade += Number(score) * grades[grade];
+    totalNum += Number(score);
   }
 }
 
-const gpa = totalGradePoints / totalCredits;
-console.log(gpa.toFixed(6));
+console.log(totalGrade / totalNum);
