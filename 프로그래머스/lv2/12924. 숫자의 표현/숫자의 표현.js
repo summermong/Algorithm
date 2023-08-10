@@ -1,20 +1,19 @@
 function solution(n) {
-    let count = 0;
-
+    let answer = 0;
+    
     for (let start = 1; start <= n; start++) {
         let sum = 0;
-
-        for (let current = start; current <= n; current++) {
-            sum += current;
-
+        
+        for (let cur = start; cur <= n; cur++) {
+            sum += cur;
+            
             if (sum === n) {
-                count++;
-                break; 
+                answer++;
+                break;
             } else if (sum > n) {
-                break; 
+                break;
             }
         }
-    }
-
-    return count;
+    } 
+    return answer
 }
