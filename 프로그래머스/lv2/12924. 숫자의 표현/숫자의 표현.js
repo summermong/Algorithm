@@ -1,19 +1,22 @@
 function solution(n) {
     let answer = 0;
+    let start = 1;
+    let end = 1;
+    let sum = 1;
     
-    for (let start = 1; start <= n; start++) {
-        let sum = 0;
-        
-        for (let cur = start; cur <= n; cur++) {
-            sum += cur;
-            
-            if (sum === n) {
-                answer++;
-                break;
-            } else if (sum > n) {
-                break;
-            }
+    while (start <= n) {
+        if (sum < n) {
+            end++;
+            sum += end;
+        } else if (sum > n) {
+            sum -= start;
+            start++;
+        } else {
+            answer++;
+            end++;
+            sum += end;
+            sum -= start;
+            start++
         }
-    } 
-    return answer
+    } return answer
 }
