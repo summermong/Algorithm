@@ -1,7 +1,7 @@
 function solution(x, n) {
-    let arr = [];
+    let answer = [];
     for (let i = 1; i <= n; i++) {
-        arr.push(x*i)
+        answer.push(x*i)
     }
-    return arr
+    return answer
 }
