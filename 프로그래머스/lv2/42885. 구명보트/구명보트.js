@@ -1,5 +1,5 @@
 function solution(people, limit) {
-  let answer = 0;
+  let ans = 0;
   people.sort((a, b) => a - b);
 
   let left = 0;
@@ -12,8 +12,8 @@ function solution(people, limit) {
     } else {
       right--;
     }
-    answer++;
+    ans++;
   }
 
-  return answer;
+  return ans;
 }
