@@ -1,13 +1,12 @@
 function solution(k, dungeons) {
-  let answer = [];
+  let ans = [];
   let visited = Array(dungeons.length).fill(false);
 
   function dfs(count, k) {
-    answer.push(count);
+    ans.push(count);
 
     for (let i = 0; i < dungeons.length; i++) {
       let current = dungeons[i];
-
       if (k >= current[0] && !visited[i]) {
         visited[i] = true;
         dfs(count + 1, k - current[1]);
@@ -18,5 +17,5 @@ function solution(k, dungeons) {
 
   dfs(0, k);
 
-  return Math.max(...answer);
+  return Math.max(...ans);
 }
