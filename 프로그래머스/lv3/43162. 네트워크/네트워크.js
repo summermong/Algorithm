@@ -9,13 +9,13 @@ function dfs(computers, visited, node) {
 
 function solution(n, computers) {
   const visited = Array(n).fill(false);
-  let count = 0;
+  let answer = 0;
 
   for (let i = 0; i < n; i++) {
     if (!visited[i]) {
       dfs(computers, visited, i);
-      count++;
+      answer++;
     }
   }
-  return count;
+  return answer;
 }
