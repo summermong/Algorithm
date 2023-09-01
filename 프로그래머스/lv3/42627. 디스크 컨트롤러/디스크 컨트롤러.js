@@ -25,5 +25,5 @@ function solution(jobs) {
         } else {
             currentTime = jobs[idx][0]
         }
-    } return parseInt(waitingTime / jobs.length)
+    } return Math.floor(waitingTime / jobs.length)
 }
