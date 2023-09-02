@@ -30,11 +30,9 @@ function solution(maps) {
         visited[nx][ny] = true;
       }
     }
-
     if (x === row - 1 && y === col - 1) {
       return distance;
-    }
+    } 
   }
-
   return -1;
 }
