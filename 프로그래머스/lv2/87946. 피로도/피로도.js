@@ -1,21 +1,10 @@
 function solution(k, dungeons) {
-  let ans = [];
-  let visited = Array(dungeons.length).fill(false);
+    const filtered = dungeons.slice().filter(v => v[0] <= k);
 
-  function dfs(count, k) {
-    ans.push(count);
-
-    for (let i = 0; i < dungeons.length; i++) {
-      let current = dungeons[i];
-      if (k >= current[0] && !visited[i]) {
-        visited[i] = true;
-        dfs(count + 1, k - current[1]);
-        visited[i] = false;
-      }
+    let answer = 0;
+    for (let i = 0; i < filtered.length; i++) {
+        const subAnswer = solution(k - filtered[i][1],filtered.filter((_, j) => i !== j));
+        if (subAnswer + 1 > answer) answer = subAnswer + 1;
     }
-  }
-
-  dfs(0, k);
-
-  return Math.max(...ans);
+    return answer;
 }
