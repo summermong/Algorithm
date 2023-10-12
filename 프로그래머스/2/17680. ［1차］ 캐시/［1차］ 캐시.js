@@ -1,5 +1,5 @@
 function solution(cacheSize, cities) {
-    let answer = 0;
+    let time = 0;
     let citiesArr = [];
     
     for (let i = 0; i < cities.length; i++) {
@@ -11,12 +11,12 @@ function solution(cacheSize, cities) {
             if (citiesArr.length > cacheSize) {
                 citiesArr.shift();
             }
-            answer += 5;
+            time += 5;
         } else {
             citiesArr = citiesArr.filter((city) => city !== curCity);
             citiesArr.push(curCity);
-            answer++;
+            time++;
         }
     }
-    return answer;
+    return time;
 }
