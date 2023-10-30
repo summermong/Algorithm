@@ -2,7 +2,7 @@ function solution(k, tangerine) {
   let map = new Map();
 
   for (let i = 0; i < tangerine.length; i++) {
-    map.set(tangerine[i], (map.get(tangerine[i]) || 0) + 1);
+    map.set(tangerine[i], map.has(tangerine[i]) ? map.get(tangerine[i]) +1 : 1); 
   }
 
   let sortedTangerine = [...map.values()].sort((a, b) => b - a);
