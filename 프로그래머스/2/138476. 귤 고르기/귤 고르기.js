@@ -6,7 +6,7 @@ function solution(k, tangerine) {
   }
 
   let sortedTangerine = [...map.values()].sort((a, b) => b - a);
-
+    
   let sum = 0;
   let types = 0;
 
