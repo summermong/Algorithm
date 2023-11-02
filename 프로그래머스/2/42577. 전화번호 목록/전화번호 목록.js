@@ -1,16 +1,16 @@
-function solution(phone_book) {
-  let answer = true;
-  let arrNum = [...phone_book];
+function solution(phoneBook) {
+  const table = {};
 
-  arrNum.sort();
+  for (const number of phoneBook) {
+    table[number] = true;
+  }
 
-  for (let i = 0; i < arrNum.length - 1; i++) {
-    let curNumLeng = arrNum[i].length;
-    let nextNum = arrNum[i + 1].slice(0, curNumLeng);
-
-    if (arrNum[i] === nextNum) {
-      return false;
+  for (const number of phoneBook) {
+    for (let i = 1; i < number.length; i += 1) {
+      const prefix = number.slice(0, i);
+      if (table[prefix]) return false;
     }
   }
-  return answer;
+
+  return true;
 }
