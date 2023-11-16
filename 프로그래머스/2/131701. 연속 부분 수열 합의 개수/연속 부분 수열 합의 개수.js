@@ -7,6 +7,7 @@ function solution(elements) {
         for (let j = 0; j < leng; j++) {
             const sum = arr.slice(j, j+i).reduce((a, b) => a+b, 0);
             set.add(sum);
+            
         }
     }
   return set.size;
