@@ -1,7 +1,7 @@
 function solution(want, number, discount) {
   let answer = 0;
 
-  for (let i = 0; i <= discount.length - 10; i++) {
+  for (let i = 0; i < discount.length; i++) {
     const slice = discount.slice(i, i + 10);
 
     let isPossible = true;
