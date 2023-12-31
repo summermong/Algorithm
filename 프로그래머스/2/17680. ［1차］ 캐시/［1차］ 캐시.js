@@ -1,22 +1,28 @@
 function solution(cacheSize, cities) {
-    let time = 0;
-    let citiesArr = [];
-    
-    for (let i = 0; i < cities.length; i++) {
-        let curCity = cities[i].toLowerCase();
-        let findCity = citiesArr.find((city) => city === curCity);
-        
-        if (!findCity) {
-            citiesArr.push(curCity);
-            if (citiesArr.length > cacheSize) {
-                citiesArr.shift();
-            }
-            time += 5;
-        } else {
-            citiesArr = citiesArr.filter((city) => city !== curCity);
-            citiesArr.push(curCity);
-            time++;
-        }
+    const MISS = 5;
+    const HIT = 1;
+
+    if (cacheSize === 0) {
+        return MISS * cities.length;
     }
-    return time;
+
+    let answer = 0;
+    let cache = [];
+
+    cities.forEach(city => {
+        city = city.toUpperCase();
+
+        let idx = cache.indexOf(city);
+
+        if (idx > -1) {
+            cache.splice(idx, 1);
+            answer += HIT;
+        } else {
+            if (cache.length >= cacheSize) cache.shift();
+            answer += MISS;
+        }
+        cache.push(city);
+    });
+
+    return answer;
 }
